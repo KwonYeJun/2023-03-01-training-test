@@ -13,6 +13,12 @@
 
   <script>
     const root = document.getElementById("root");
+    const trainingData = {
+      title: "Lorem Ipsum",
+      paragraph: " Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia nesciunt quam commodi aspernatur molestias similique nisi. Et, natus! Et quae non in consequuntur nulla expedita aut necessitatibus. Quaerat, mollitia illum?",
+      color: ["#1E1E1E", "#FFFFFF"],
+
+    }
 
 
     //divlist 배열을 이용 하여 배열 갯수 많큼 root 아래에 자식으로 태그를 만들어주었다.
@@ -22,6 +28,7 @@
 
     //만들어둔 함수를 이용하여 원하는 태그의 자식을 만들어 주었다.
 
+  
 
     let layout = {
       divlist: ["header", "main", "footer"],
@@ -34,20 +41,42 @@
           a.appendChild(df);
         }
         return 0;
+        //리턴 값을 포문 밖에 해두니 원하는 값을 얻었다
 
       },
-
+      rootstyle: function (width, height, border) {
+        root.style.width = width;
+        root.style.height = height;
+        root.style.border = border;
+      },
+      addstyle: function (tagName, width, height, backgroundColor, display, flexDirection, justifyContent, alignItems) {
+        const tagN = document.querySelector(tagName);
+        tagN.style.width = width;
+        tagN.style.height = height;
+        tagN.style.backgroundColor=backgroundColor;
+        tagN.style.display = display;
+        tagN.style.flexDirection = flexDirection;
+        tagN.style.justifyContent = justifyContent;
+        tagN.style.alignItems = alignItems;
+      },//태그를 찾아 기본적인 스타일을 줄 수 있게 만들어 보있다.
     }
-
-
 
     for (let i = 0; i < layout.divlist.length; i++) {
       const One = document.createElement(layout.divlist[i]);
       root.appendChild(One);
     }
+
     layout.divfactoy("header", 3, "div");
     layout.divfactoy("main", 1, "div");
     layout.divfactoy("footer", 1, "div");
+    layout.rootstyle("100vw", "100vh", "1px solid black");
+    // layout.addstyle(tagName,width,height,backgroundColor,display,flexDirection,justifyContent,alignItems);
+    layout.addstyle("header","100%","30%","red","flex","column","end","center");
+    layout.addstyle("main","100%","40%","green","flex","column","end","center");
+    layout.addstyle("footer","100%","30%","blue","flex","column","end","center");
+    //layout객체에 add함수에 스타일을 동적으로? 추가 할 수 있게 만들어 보았다.
+
+
 
     // const a = document.querySelector("header");
     // for (let i = 0; i < 3; i++) {
