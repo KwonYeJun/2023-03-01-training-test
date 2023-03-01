@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-  
+  <div id="root"></div>
+
+
+  <script>
+    const root = document.getElementById("root");
+
+    const address = {
+      city: "구미",
+      state: "한국",
+      dong: "광평동",
+      postNumber: "123",
+      hostName: "집"
+
+    }
+    const list = {
+      myName: "kyj",
+      age: 26,
+      gender: "남",
+      githubAddress: "KwonYeJun",
+      add: address,
+      totalAddress: function (city, state, dong, postNumber) {
+        return `${city}시 ${state}구 ${dong}동, 우편번호 : ${postNumber}`;
+
+      }
+
+    }
+    console.dir(list);
+    console.table(address);
+    console.table(list);
+    console.log(list.totalAddress(address));
+
+  </script>
 </body>
+
 </html>
