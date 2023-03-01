@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script>
+    const root = document.getElementById("root");
+    let divlist = ["header", "main", "footer"];
+
+    //divlist 배열을 이용 하여 배열 갯수 많큼 root 아래에 자식으로 태그를 만들어주었다.
+    for (let i = 0; i < divlist.length; i++) {
+      const One = document.createElement(divlist[i]);
+      root.appendChild(One);
+    }
+
+    //함수를 이용 하여 필요 할 때 마다 어느 부모 태크의 자식으로 태그를 만들수 있도록 부모명, 자식으로 만들 갯수, 자식 태그 형태를 함수 호출 하면서 부르면 만들수 있게 해보았다.
+    function divfactoy(qnah, counter,gudtlr) {
+      for (let i = 0; i < counter; i++) {
+        const df = document.createElement(gudtlr);
+        const a = document.querySelector(qnah);
+        return a.appendChild(df);
+      }
+      
+    }
+    divfactoy("header", 2, "div");
+    divfactoy("main",1,"div");
+    divfactoy("footer",1,"div");
+    
+
+  </script>
+</body>
+
+</html>
