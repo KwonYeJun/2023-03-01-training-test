@@ -13,28 +13,35 @@
 
   <script>
     const root = document.getElementById("root");
-    let divlist = ["header", "main", "footer"];
+
 
     //divlist 배열을 이용 하여 배열 갯수 많큼 root 아래에 자식으로 태그를 만들어주었다.
-    for (let i = 0; i < divlist.length; i++) {
-      const One = document.createElement(divlist[i]);
-      root.appendChild(One);
-    }
+
 
     //함수를 이용 하여 필요 할 때 마다 어느 부모 태크의 자식으로 태그를 만들수 있도록 부모명, 자식으로 만들 갯수, 자식 태그 형태를 함수 호출 하면서 부르면 만들수 있게 해보았다.
-    function divfactoy(qnah, counter,gudtlr) {
-      for (let i = 0; i < counter; i++) {
-        const df = document.createElement(gudtlr);
-        const a = document.querySelector(qnah);
-        return a.appendChild(df);
-      }
-      
-    }
-    divfactoy("header", 2, "div");
-    divfactoy("main",1,"div");
-    divfactoy("footer",1,"div");
+
+    //만들어둔 함수를 이용하여 원하는 태그의 자식을 만들어 주었다.
     
 
+    let layout = {
+      divlist: ["header", "main", "footer"],
+      divfactoy: function (qnah, counter, gudtlr) {
+        for (let i = 0; i < counter; i++) {
+          const df = document.createElement(gudtlr);
+          const a = document.querySelector(qnah);
+          //부모태그를 찾는게 필요 하여 쿼리셀렉터를 사용해 보았다.
+          return a.appendChild(df);
+        }
+      },
+
+    }
+    for (let i = 0; i < layout.divlist.length; i++) {
+      const One = document.createElement(layout.divlist[i]);
+      root.appendChild(One);
+    }
+    layout.divfactoy("header", 3, "div");
+    layout.divfactoy("main", 1, "div");
+    layout.divfactoy("footer", 1, "div");
   </script>
 </body>
 
