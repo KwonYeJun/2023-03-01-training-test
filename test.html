@@ -26,7 +26,7 @@
 
     //함수를 이용 하여 필요 할 때 마다 어느 부모 태크의 자식으로 태그를 만들수 있도록 부모명, 자식으로 만들 갯수, 자식 태그 형태를 함수 호출 하면서 부르면 만들수 있게 해보았다.
 
-    //만들어둔 함수를 이용하여 원하는 태그의 자식을 만들어 주었다.
+    //만들어둔 함수를 이용하여 원하는 태그의 자식을 만들어 주었다.LO
 
   
 
@@ -51,13 +51,21 @@
       },
       addstyle: function (tagName, width, height, backgroundColor, display, flexDirection, justifyContent, alignItems) {
         const tagN = document.querySelector(tagName);
-        tagN.style.width = width;
+       
         tagN.style.height = height;
         tagN.style.backgroundColor=backgroundColor;
         tagN.style.display = display;
         tagN.style.flexDirection = flexDirection;
         tagN.style.justifyContent = justifyContent;
         tagN.style.alignItems = alignItems;
+      },//태그를 찾아 기본적인 스타일을 줄 수 있게 만들어 보있다.
+      childstyle: function (tagName,counter, width, height, backgroundColor, display, flexDirection, justifyContent, alignItems) {
+        const tagN = document.querySelector(tagName);
+        tagN.children[counter].style.width = width;
+        tagN.children[counter].style.height = height;
+        tagN.children[counter].style.backgroundColor= backgroundColor;
+       
+  
       },//태그를 찾아 기본적인 스타일을 줄 수 있게 만들어 보있다.
     }
 
@@ -66,7 +74,7 @@
       root.appendChild(One);
     }
 
-    layout.divfactoy("header", 3, "div");
+    layout.divfactoy("header", 2, "div");
     layout.divfactoy("main", 1, "div");
     layout.divfactoy("footer", 1, "div");
     layout.rootstyle("100vw", "100vh", "1px solid black");
@@ -74,6 +82,20 @@
     layout.addstyle("header","100%","30%","red","flex","column","end","center");
     layout.addstyle("main","100%","40%","green","flex","column","end","center");
     layout.addstyle("footer","100%","30%","blue","flex","column","end","center");
+    layout.childstyle("header",0,"100%","30%","blue","flex","column","end","center");
+    layout.childstyle("header",1,"100%","30%","pink","flex","column","end","center");
+
+
+
+
+
+    // const tN = document.querySelector("header");
+    // let chN = document.getElementsByTagName("div");
+    // console.table(document.getElementsByTagName);
+    // console.log(typeof(chN));
+ 
+  
+
     //layout객체에 add함수에 스타일을 동적으로? 추가 할 수 있게 만들어 보았다.
 
 
